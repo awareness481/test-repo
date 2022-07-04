@@ -56,4 +56,4 @@ USER nextjs
 EXPOSE $port
 
 ENV PORT $port
-CMD ["node", "server.js"]
+CMD [`PORT=${port}`, "node", "server.js"]
