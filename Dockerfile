@@ -7,6 +7,9 @@ RUN npm install pnpm -g
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
+ARG port
+RUN echo "Port: $port"
+
 # If using npm with a `package-lock.json` comment out above and use below instead
 # COPY package.json package-lock.json ./ 
 # RUN npm ci
@@ -50,8 +53,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 3001
+EXPOSE port
 
-ENV PORT 3001
-
+ENV PORT port
 CMD ["node", "server.js"]
