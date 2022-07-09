@@ -10,7 +10,7 @@ RUN pnpm install --frozen-lockfile
 # If using npm with a `package-lock.json` comment out above and use below instead
 # COPY package.json package-lock.json ./ 
 # RUN npm ci
-
+ 
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
 WORKDIR /app
